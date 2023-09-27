@@ -1,57 +1,73 @@
 #!/usr/bin/python3
-class Node:
-    def __init__(self, data, next_node=None):
-        self.data = data
-        self.next_node = next_node
+""" Creates an empty class called Square
+"""
+
+
+class Square:
+    """ Empty class with size private attribute
+    """
+    def __init__(self, size=0):
+        """
+                Instantiation with size
+        Args:
+            size: size of the square
+        """
+        if type(size) is not int:
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = size
+
+    def area(self):
+        """
+        Returns the area of the square
+        """
+        return (self.__size * self.__size)
 
     @property
-    def data(self):
-        return self.__data
+    def size(self):
+        """
+        size getter. Handle size errors
+        """
+        return self.__size
 
-    @data.setter
-    def data(self, value):
-        if not isinstance(value, int):
-            raise TypeError("data must be an integer")
-        self.__data = value
+    @size.setter
+    def size(self, value):
+        """
+        size setter. Set the size square
+        """
+        if type(value) is not int:
+            raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
 
-    @property
-    def next_node(self):
-        return self.__next_node
+    def __lt__(self, other):
+        """ Compare if our square is less than the other
+        """
+        return self.area() < other.area()
 
-    @next_node.setter
-    def next_node(self, value):
-        if not isinstance(value, Node) and value is not None:
-            raise TypeError("next_node must be a Node object")
-        self.__next_node = value
+    def __le__(self, other):
+        """ Compare if our square is less ot equal than the other
+        """
+        return self.area() <= other.area()
 
+    def __eq__(self, other):
+        """ Compare if our square is equal than the other
+        """
+        return self.area() == other.area()
 
-class SinglyLinkedList:
-    def __str__(self):
-        rtn = ""
-        ptr = self.__head
+    def __ne__(self, other):
+        """ Compare if our square is different than the other
+        """
+        return self.area() != other.area()
 
-        while ptr is not None:
-            rtn += str(ptr.data)
-            if ptr.next_node is not None:
-                rtn += "\n"
-            ptr = ptr.next_node
+    def __gt__(self, other):
+        """ Compare if our square is greater than the other
+        """
+        return self.area() > other.area()
 
-        return rtn
-
-    def __init__(self):
-        self.__head = None
-
-    def sorted_insert(self, value):
-        ptr = self.__head
-
-        while ptr is not None:
-            if ptr.data > value:
-                break
-            ptr_prev = ptr
-            ptr = ptr.next_node
-
-        newNode = Node(value, ptr)
-        if ptr == self.__head:
-            self.__head = newNode
-        else:
-            ptr_prev.next_node = 
+    def __ge__(self, other):
+        """ Compare if our square is less than the other
+        """
+        return self.area() >= other.area()
