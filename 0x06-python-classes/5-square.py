@@ -1,21 +1,37 @@
 #!/usr/bin/python3
-import math
+""" Square module
+"""
 
 
-class MagicClass:
+class Square:
+    """ Define a Square class
+    """
+    def __init__(self, size):
+        """ Intialize methonds that store the size of the square. """
+        self.__size = size
 
-    """Class that stores the properties
-    of a circumference"""
-    def __init__(self, radius=0):
-        self.__radius = 0
-        if type(radius) is not int and type(radius) is not float:
-            raise TypeError('radius must be a number')
-        self.__radius = radius
+    @property
+    def size(self):
+        """ property for method size """
+        return self.__size
 
-    """ Method that calculates the area of the circumference """
+    @size.setter
+    def size(self, value):
+        """ Setter for method size """
+        self.__size = value
+
     def area(self):
-        return ((self.__radius ** 2) * math.pi)
+        """ The methode area returns area of square """
+        if not isinstance(self.__size, int):
+            raise TypeError("size must be an integer")
+        elif self.__size < 0:
+            raise ValueError("size must be >= 0")
+        else:
+            return int(self.__size) * int(self.__size)
 
-    """ Method that calculates the perimeter of a circumference """
-    def circumference(self):
-        return (2 * math.pi * self.__radius)
+    def my_print(self):
+        """ The function that prints  the square with the character # """
+        if self.__size == 0:
+            print()
+        for p in range(self.__size):
+            print("#" * self.__size)
