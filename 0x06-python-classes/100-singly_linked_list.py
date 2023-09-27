@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 class Node:
     def __init__(self, data, next_node=None):
-        if not isinstance(data, int):
-            raise TypeError("data must be an integer")
-        self.__data = data
-        if not isinstance(next_node, Node) and next_node is not None:
-            raise TypeError("next_node must be a Node object")
-        self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
@@ -24,20 +20,38 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        if not isinstance(value, Node) and next_node is not None:
+        if not isinstance(value, Node) and value is not None:
             raise TypeError("next_node must be a Node object")
-        self.__data = value
+        self.__next_node = value
+
 
 class SinglyLinkedList:
-    linked_list = []
+    def __str__(self):
+        rtn = ""
+        ptr = self.__head
+
+        while ptr is not None:
+            rtn += str(ptr.data)
+            if ptr.next_node is not None:
+                rtn += "\n"
+            ptr = ptr.next_node
+
+        return rtn
+
     def __init__(self):
-        pass
+        self.__head = None
 
     def sorted_insert(self, value):
-        new_node = Node(value)
-        self.linked_list.append(Node.data)
-        sorted_list = self.linked_list.sort()
+        ptr = self.__head
 
-    def __str__(self):
-        for i in self.sorted_list:
-            print(i)
+        while ptr is not None:
+            if ptr.data > value:
+                break
+            ptr_prev = ptr
+            ptr = ptr.next_node
+
+        newNode = Node(value, ptr)
+        if ptr == self.__head:
+            self.__head = newNode
+        else:
+            ptr_prev.next_node = 
