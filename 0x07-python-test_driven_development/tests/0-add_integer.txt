@@ -1,5 +1,5 @@
-dd_integer.txt
-# Joshpee
+# 0-add_integer.txt
+# Kali
 
 ===========================
 How to Use 0-add_integer.py
