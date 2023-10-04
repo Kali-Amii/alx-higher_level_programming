@@ -1,6 +1,5 @@
-
-iquare.txt
-# Joshpee
+# 4-print_square.txt
+# Kali
 
 ============================
 How to Use 4-print_square.py
