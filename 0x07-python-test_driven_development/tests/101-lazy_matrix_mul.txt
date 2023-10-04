@@ -1,5 +1,5 @@
-zy_matrix_mul.txt
-# Joshpee
+# 101-lazy_matrix_mul.txt
+# Kali
 
 =================================
 How to Use 101-lazy_matrix_mul.py
